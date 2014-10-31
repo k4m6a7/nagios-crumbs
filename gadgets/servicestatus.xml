@@ -19,8 +19,8 @@
          var auth = btoa(user + ':' + pass);
 
          var params = {
-            gadgets.io.RequestParameters.CONTENT_TYPE = gadgets.io.ContentType.TEXT,
-            gadgets.io.RequestParameters.HEADERS = { 'Authorization': 'Basic ' + auth }
+            gadgets.io.RequestParameters.CONTENT_TYPE : gadgets.io.ContentType.TEXT,
+            gadgets.io.RequestParameters.HEADERS : { 'Authorization': 'Basic ' + auth }
          };
          
          console.log(params);
@@ -35,10 +35,11 @@
 
          var getStatus = function() {
             gadgets.io.makeRequest(request_uri, handleStatus, params);
+            setTimeout(getStatus, 90000);
          }
 
          var onGadgetLoad = function() {
-             setTimeout(getStatus, 15000);
+             getStatus();
          }
 
          gadgets.util.registerOnLoadHandler(onGadgetLoad);
