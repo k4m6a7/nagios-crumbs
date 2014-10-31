@@ -18,8 +18,10 @@
 
          var params = {};
          params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.TEXT;  
+         console.log(params);
 
          var request_uri = 'http://' + user + ':' + pass + '@' + url + '?query=service&hostname=' + host + '&servicedescription=' + service;
+         console.log(request_uri);
 
          var handleStatus = function(response) {
              document.getElementById('body').innerHTML = response.text;
@@ -35,7 +37,7 @@
 
          gadgets.util.registerOnLoadHandler(onGadgetLoad);
      </script>
-     <div id="body"></div>
+     <div id="body">startup</div>
      ]]>
   </Content> 
 </Module>
