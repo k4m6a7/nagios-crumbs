@@ -19,8 +19,8 @@
          var auth = btoa(user + ':' + pass);
 
          var params = {
-            gadgets.io.RequestParameters.CONTENT_TYPE : gadgets.io.ContentType.TEXT,
-            gadgets.io.RequestParameters.HEADERS : { 'Authorization': 'Basic ' + auth }
+            'CONTENT_TYPE' : gadgets.io.ContentType.TEXT,
+            'HEADERS'      : { 'Authorization': 'Basic ' + auth }
          };
          
          console.log(params);
