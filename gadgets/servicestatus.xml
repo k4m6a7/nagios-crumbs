@@ -19,7 +19,7 @@
          var auth = btoa(user + ':' + pass);
 
          var params = {
-            'CONTENT_TYPE' : 'JSON',
+            'CONTENT_TYPE' : 'TEXT',
             'HEADERS'      : { 'Authorization': 'Basic ' + auth }
          };
          
@@ -30,7 +30,7 @@
 
          var handleStatus = function(response) {
              console.log(response);
-             document.getElementById('body').innerHTML = response;
+             document.getElementById('body').innerHTML = response.text;
          }
 
          var getStatus = function() {
