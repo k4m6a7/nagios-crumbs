@@ -16,11 +16,16 @@
          var host = prefs.getString("host");
          var service = prefs.getString("service");
 
-         var params = {};
-         params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.TEXT;  
+         var auth = btoa(user + ':' + pass);
+
+         var params = {
+            gadgets.io.RequestParameters.CONTENT_TYPE = gadgets.io.ContentType.TEXT,
+            gadgets.io.RequestParameters.HEADERS = { 'Authorization': 'Basic ' + auth }
+         };
+         
          console.log(params);
 
-         var request_uri = 'https://' + user + ':' + pass + '@' + url + '?query=service&hostname=' + host + '&servicedescription=' + service;
+         var request_uri = 'https://' + url + '?query=service&hostname=' + host + '&servicedescription=' + service;
          console.log(request_uri);
 
          var handleStatus = function(response) {
