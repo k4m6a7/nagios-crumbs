@@ -19,7 +19,7 @@
          var auth = btoa(user + ':' + pass);
 
          var params = {
-            'CONTENT_TYPE' : gadgets.io.ContentType.TEXT,
+            'CONTENT_TYPE' : 'JSON',
             'HEADERS'      : { 'Authorization': 'Basic ' + auth }
          };
          
@@ -30,7 +30,7 @@
 
          var handleStatus = function(response) {
              console.log(response);
-             document.getElementById('body').innerHTML = response.text;
+             document.getElementById('body').innerHTML = response;
          }
 
          var getStatus = function() {
