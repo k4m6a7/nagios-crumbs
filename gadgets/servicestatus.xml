@@ -34,7 +34,14 @@
          }
 
          var getStatus = function() {
-            gadgets.io.makeRequest(request_uri, handleStatus, params);
+            //gadgets.io.makeRequest(request_uri, handleStatus, params);
+
+            var req = new XMLHttpRequest();
+            req.open('GET', request_uri, false);
+            req.setRequestHeader('Authorization', 'Basic ' + auth);
+            req.send();
+            console.log(req);
+
             setTimeout(getStatus, 90000);
          }
 
