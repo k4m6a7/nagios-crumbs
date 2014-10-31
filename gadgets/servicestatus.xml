@@ -9,6 +9,7 @@
   <Content type="html">
      <![CDATA[ 
      <script type="text/javascript">
+         var prefs = new gadgets.Prefs();
          var user = prefs.getString("user");
          var pass = prefs.getString("pass"); 
          var url = prefs.getString("url");
