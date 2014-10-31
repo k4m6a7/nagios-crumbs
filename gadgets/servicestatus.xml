@@ -15,17 +15,24 @@
          var host = prefs.getString("host");
          var service = prefs.getString("service");
 
+         var params = {};
+         params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.TEXT;  
+
          var request_uri = 'http://' + user + ':' + pass + '@' + url + '?query=service&hostname=' + host + '&servicedescription=' + service;
 
-         _IG_RegisterOnloadHandler(function() {
-             setTimeout(function() {
-                 _IG_FetchContent(request_uri,
-                                  function(response) {  
-                                      _gel("body").innerHTML = response;
-                                  }, 
-                                  { refreshInterval: 0 });
-             }, 15000);
-         });
+         var handleStatus = function(response) {
+             document.getElementById('body').innerHTML = response.text;
+         }
+
+         var getStatus = function() {
+            gadgets.io.makeRequest(request_uri, handleStatus, params);
+         }
+
+         var onGadgetLoad = function() {
+             setTimeout(getStatus, 15000);
+         }
+
+         gadgets.util.registerOnLoadHandler(onGadgetLoad);
      </script>
      <div id="body"></div>
      ]]>
